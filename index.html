@@ -27,7 +27,7 @@
       <div class="wrapper">
 
 <table>
-<td><img src='im3.jpg', height=auto, width=auto></td>
+<td><img id="headshot", height=auto, width=auto></td>
 <td width="50%", align="center">
 <p><font size="+2">Jordan T. Ash</font></p>
 <p><font size="-1">ash.jordan at microsoft.com</font></p>
@@ -39,6 +39,13 @@
 </tr>
 </table>
 
+<script>
+    const headshot = document.getElementById("headshot");
+    const randomIndex = Math.floor(Math.random() * images.length);
+    headshot.src = images[randomIndex];
+</script>
+	      
+	      
 
 <br>
 <p>I'm a principal researcher at Microsoft Research in New York City, where I mostly think about problems related to deep learning and sequential decision making. I earned my PhD from the computer science department at Princeton University.</p>
