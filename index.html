@@ -41,18 +41,25 @@
 
 <script>
     const images = ["DSC09940-Edit.jpg", "im3.jpg"];
-    let lastIndex = parseInt(localStorage.getItem("lastImageIndex"));
-    if (isNaN(lastIndex)) lastIndex = -1;
+    const storageKey = "lastImageIndex";
+    let lastIndex = localStorage.getItem(storageKey);
 
-    // Compute the next image index
-    const nextIndex = (lastIndex + 1) % images.length;
+    let nextIndex;
 
-    // Set the new image
+    if (lastIndex === null) {
+      // First visit: choose randomly
+      nextIndex = Math.floor(Math.random() * images.length);
+    } else {
+      // Subsequent visits: alternate
+      lastIndex = parseInt(lastIndex);
+      nextIndex = (lastIndex + 1) % images.length;
+    }
+
+    // Show the image and update storage
     document.getElementById("headshot").src = images[nextIndex];
-
-    // Store it for the next visit
-    localStorage.setItem("lastImageIndex", nextIndex);
+    localStorage.setItem(storageKey, nextIndex);
 </script>
+
 	      
 	      
 
