@@ -40,10 +40,18 @@
 </table>
 
 <script>
-    const headshot = document.getElementById("headshot");
     const images = ["DSC09940-Edit.jpg", "im3.jpg"];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    headshot.src = images[randomIndex];
+    let lastIndex = parseInt(localStorage.getItem("lastImageIndex"));
+    if (isNaN(lastIndex)) lastIndex = -1;
+
+    // Compute the next image index
+    const nextIndex = (lastIndex + 1) % images.length;
+
+    // Set the new image
+    document.getElementById("headshot").src = images[nextIndex];
+
+    // Store it for the next visit
+    localStorage.setItem("lastImageIndex", nextIndex);
 </script>
 	      
 	      
